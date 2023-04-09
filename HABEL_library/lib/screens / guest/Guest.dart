@@ -21,10 +21,15 @@ class _GuestScreenState extends State<GuestScreen> {
     super.initState();
 
     _widgets.addAll([
+      connexionScreen(
+          onChangedStep: (index) => setState(() => _indexSelected = index),
+      ),
       AuthScreen(
           onChangedStep: (index) => setState(() => _indexSelected = index),
       ),
-      TermsScreen(),
+      TermsScreen(
+          onChangedStep: (index) => setState(() => _indexSelected = index),
+      ),
     ]);
   }
 

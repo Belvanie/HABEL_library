@@ -2,7 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class TermsScreen extends StatefulWidget{
-  TermsScreen({Key? key}) : super(key: key);
+  final Function(int) onChangedStep;
+
+  TermsScreen({
+    Key? key,
+    required this.onChangedStep,
+  }) : super(key: key);
 
   @override
   _TermsScreenState createState() => _TermsScreenState();
@@ -40,7 +45,8 @@ class _TermsScreenState extends State<TermsScreen> {
             leading: IconButton(
               icon: Icon(Icons.arrow_back),
               color: Colors.black,
-              onPressed: () {  },),
+              onPressed: () => widget.onChangedStep(1),
+            ),
           ),
           body: Padding(
             padding: const EdgeInsets.only(
@@ -70,7 +76,7 @@ class _TermsScreenState extends State<TermsScreen> {
                   height: 15.0,
                 ),
                 ElevatedButton(
-                  onPressed: !_termslue ? null : () => print('accept'),
+                  onPressed: !_termslue ? null : () => widget.onChangedStep(0),
                   child: Text(
                       'accepte & continue'.toUpperCase(),
                       style: TextStyle(

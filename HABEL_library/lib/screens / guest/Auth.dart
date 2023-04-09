@@ -18,16 +18,30 @@ class _AuthScreenState extends State<AuthScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final RegExp emailRegex = RegExp(r"[a-z0-9\._-]+@[a-z0-9\._-]+\.[a-z]+");
   final RegExp pwdRegex = RegExp(r"[a-z0-9]+[@&+#$%=?!^]+[a-z0-9]+");
+  final RegExp nomRegex = RegExp(r"[a-zA-Z0-9._-]+");
+  final RegExp sexRegex = RegExp(r"[a-zA-Z]+");
 
   bool _isSecret = true;
 
   String _email = '';
   String _password = '';
+  String _nom = '';
+  String _sex = '';
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          titleSpacing: 0.0,
+          elevation: 0,
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            color: Colors.black,
+            onPressed: () => widget.onChangedStep(0),
+          ),
+        ),
         body: Center(
           child: SingleChildScrollView(
             padding: EdgeInsets.symmetric(
@@ -77,8 +91,8 @@ class _AuthScreenState extends State<AuthScreen> {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       TextFormField(
-                        onChanged: (value) => setState(() => _email = value),
-                        validator: (value) => value!.isEmpty || !emailRegex.hasMatch(value)
+                        onChanged: (value) => setState(() => _nom = value),
+                        validator: (value) => value!.isEmpty || !nomRegex.hasMatch(value)
                             ? 'Entrer un nom valide svp'
                             : null ,
                         textAlign: TextAlign.center,
@@ -139,8 +153,8 @@ class _AuthScreenState extends State<AuthScreen> {
                       ),
 
                       TextFormField(
-                        onChanged: (value) => setState(() => _email = value),
-                        validator: (value) => value!.isEmpty || !emailRegex.hasMatch(value)
+                        onChanged: (value) => setState(() => _sex = value),
+                        validator: (value) => value!.isEmpty || !sexRegex.hasMatch(value)
                             ? 'Feminin Ou Masculin?'
                             : null ,
                         textAlign: TextAlign.center,
@@ -222,7 +236,7 @@ class _AuthScreenState extends State<AuthScreen> {
                                 if (_formKey.currentState!.validate()) {
                                   print(_email);
                                   print(_password);
-                                  widget.onChangedStep(1);
+                                  widget.onChangedStep(2);
                                 }
                               },
                         /*onPressed: () {
