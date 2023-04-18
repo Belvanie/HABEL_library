@@ -17,7 +17,7 @@ class connexionScreen extends StatefulWidget{
 class _connexionScreenState extends State<connexionScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final RegExp emailRegex = RegExp(r"[a-z0-9\._-]+@[a-z0-9\._-]+\.[a-z]+");
-  final RegExp pwdRegex = RegExp(r"[a-z0-9]+[@&+#$%=?!^]+[a-z0-9]+");
+  final RegExp pwdRegex = RegExp(r"(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#.%^&*])(?=.{8,})");    //(r"[a-z0-9@&+#$%=?!^]+");
 
   bool _isSecret = true;
 
@@ -35,7 +35,7 @@ class _connexionScreenState extends State<connexionScreen> {
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center, //Pour que chaque phrase commence toujours a gauche
-              children: [
+              children: <Widget>[
                 RichText(
                   text: TextSpan(
                     text: 'habel'.toUpperCase(),
@@ -70,49 +70,38 @@ class _connexionScreenState extends State<connexionScreen> {
                 SizedBox(
                   height: 40.0,
                 ),
+
                 Form(
                   key: _formKey,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       TextFormField(
-                        onChanged: (value) => setState(() => _email = value),
-                        validator: (value) => value!.isEmpty || !emailRegex.hasMatch(value)
-                            ? 'Entrer un email valide svp'
-                            : null ,
-                        textAlign: TextAlign.center,
+                        textAlign: TextAlign.left,
                         decoration: InputDecoration(
-                          filled: true,
-                          fillColor: Color(0xFFDCDCDC),
-                          hintText: 'Adresse mail',
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            borderSide: BorderSide(
-                              color: Colors.pink, // Couleur de bordure par defaut
-                            ),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            borderSide: BorderSide(
-                              color: Colors.green, // Couleur de bordure lorsqu'on est sur l'element
-                            ),
+                          labelText: 'Nom',
+                          hintText: 'Entrer votre nom',
+                          icon: Icon(
+                            Icons.person,
+                            color: Colors.blue,
+                            size: 30,
                           ),
                           contentPadding: EdgeInsets.symmetric(
-                            vertical: 20.0,
+                            vertical: 10.0,
                           ),
                         ),
                       ),
                       SizedBox(
-                        height: 35.0,
+                        height: 15.0,
                       ),
 
                       TextFormField(
                         onChanged: (value) => setState(() => _password = value),
-                        validator: (value) => value!.isEmpty || !pwdRegex.hasMatch(value) || value.length < 6
+                        validator: (value) => value!.isEmpty || !pwdRegex.hasMatch(value) //|| value.length < 6
                             ? 'Entrer un mot de passe valide svp'
                             : null ,
                         obscureText: _isSecret,
-                        textAlign: TextAlign.center,
+                        textAlign: TextAlign.left,
                         decoration: InputDecoration(
                           suffixIcon: InkWell(
                             onTap: () =>
@@ -122,23 +111,15 @@ class _connexionScreenState extends State<connexionScreen> {
                                 : Icons.visibility_off
                             ),
                           ),
-                          filled: true,
-                          fillColor: Color(0xFFDCDCDC),
-                          hintText: 'Mot de passe',
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            borderSide: BorderSide(
-                              color: Colors.pink,
-                            ),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            borderSide: BorderSide(
-                              color: Colors.green,
-                            ),
+                          labelText: 'Mot de passe',
+                          hintText: 'Votre mot de passe',
+                          icon: Icon(
+                            Icons.lock,
+                            color: Colors.pink,
+                            size: 30,
                           ),
                           contentPadding: EdgeInsets.symmetric(
-                            vertical: 20.0,
+                            vertical: 10.0,
                           ),
                         ),
                       ),
@@ -147,24 +128,23 @@ class _connexionScreenState extends State<connexionScreen> {
                       ),
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Color(0xFFFF1493),
+                          backgroundColor: Colors.blue,//Color(0xFFFF1493),
                           padding: EdgeInsets.symmetric(
                             vertical: 15.0,
                           ),
                         ),
-                        onPressed: !emailRegex.hasMatch(_email) || !pwdRegex.hasMatch(_password)
+                        onPressed: !pwdRegex.hasMatch(_password)
                             ? null
                             : () {
                           if (_formKey.currentState!.validate()) {
-                            print(_email);
                             print(_password);
                             widget.onChangedStep(1);
                           }
                         },
                         /*onPressed: () {
                           if (_formKey.currentState!.validate()){
-                            print(_email);
                             print(_password);
+                            widget.onChangedStep(1);
                           }
                         },*/
                         child: Text(

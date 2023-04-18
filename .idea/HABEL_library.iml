@@ -6,6 +6,9 @@
       <excludeFolder url="file://$MODULE_DIR$/HABEL_library/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/HABEL_library/build" />
       <excludeFolder url="file://$MODULE_DIR$/HABEL_library/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/Frontend/HABEL_library/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/Frontend/HABEL_library/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/Frontend/HABEL_library/build" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
