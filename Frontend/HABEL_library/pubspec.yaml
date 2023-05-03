@@ -36,6 +36,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   carousel_pro: ^1.0.0
+  flutter_staggered_grid_view: ^0.6.2
 
 dev_dependencies:
   flutter_test:
@@ -47,6 +48,7 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
+  readmore: ^2.2.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -68,6 +70,31 @@ flutter:
      - images/image3.jpeg
      - images/image4
      - images/image5.jpeg
+     - images/livre1.jpeg
+     - images/livre2.jpeg
+     - images/livre3.jpeg
+     - images/livre4.jpeg
+     - images/livre5.jpeg
+     - images/livre6.jpeg
+     - images/livre7.jpeg
+     - images/livre8.jpeg
+     - images/livre9.jpeg
+     - images/avatar.jpg
+     - images/bg-liquide1.jpeg
+     - images/bg-liquide2.jpeg
+     - images/bg-liquide3.jpeg
+     - images/bg-liquide4.jpeg
+     - images/bg-liquide5.jpeg
+     - images/bg-liquide6.jpeg
+     - images/bg-liquide7.jpeg
+     - images/bg-liquide8.jpeg
+     - images/bg-liquide9.jpeg
+     - images/bg-liquide10.jpeg
+     - images/bg-liquide11.jpeg
+     - images/bg-liquide12.jpeg
+     - images/bg-liquide13.jpeg
+     - images/bg-liquide14.jpeg
+     - images/bg-liquide15.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

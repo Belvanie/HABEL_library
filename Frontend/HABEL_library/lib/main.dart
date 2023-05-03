@@ -1,9 +1,14 @@
-import 'package:StreamLib/screens%20/%20guest/accueil.dart';
 import 'package:flutter/material.dart';
+import 'package:StreamLib/screens%20/%20guest/accueil.dart';
+import 'package:StreamLib/screens%20/%20guest/achat.dart';
+import 'package:StreamLib/screens%20/%20guest/categories.dart';
+import 'package:StreamLib/screens%20/%20guest/livre.dart';
+import 'package:StreamLib/screens%20/%20guest/maLibrairie.dart';
 import 'package:StreamLib/screens%20/%20guest/Guest.dart';
 import 'package:StreamLib/screens%20/%20guest/accueil.dart';
 import 'package:StreamLib/screens%20/%20guest/connexion.dart';
 
+//--no-sound-null-safety
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {

@@ -44,7 +44,7 @@ class _TermsScreenState extends State<TermsScreen> {
             ),
             leading: IconButton(
               icon: Icon(Icons.arrow_back),
-              color: Colors.black,
+              color: Colors.pink,
               onPressed: () => widget.onChangedStep(1),
             ),
           ),

@@ -17,7 +17,7 @@ class connexionScreen extends StatefulWidget{
 class _connexionScreenState extends State<connexionScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final RegExp emailRegex = RegExp(r"[a-z0-9\._-]+@[a-z0-9\._-]+\.[a-z]+");
-  final RegExp pwdRegex = RegExp(r"(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#.%^&*])(?=.{8,})");    //(r"[a-z0-9@&+#$%=?!^]+");
+  final RegExp pwdRegex = RegExp(r"[a-z0-9@&+#$%=?!^]+");    //(r"(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#.%^&*])(?=.{8,})");;
 
   bool _isSecret = true;
 
@@ -28,14 +28,17 @@ class _connexionScreenState extends State<connexionScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Center(
+        body: Container(
           child: SingleChildScrollView(
             padding: EdgeInsets.symmetric(
                 horizontal: 30.0
             ),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center, //Pour que chaque phrase commence toujours a gauche
+              //crossAxisAlignment: CrossAxisAlignment.center, //Pour que chaque phrase commence toujours a gauche
               children: <Widget>[
+                SizedBox(
+                  height: 30.0, // Widget qui te permet de mettre des espaces.
+                ),
                 RichText(
                   text: TextSpan(
                     text: 'habel'.toUpperCase(),
@@ -115,7 +118,7 @@ class _connexionScreenState extends State<connexionScreen> {
                           hintText: 'Votre mot de passe',
                           icon: Icon(
                             Icons.lock,
-                            color: Colors.pink,
+                            color: Color(0xFFFF1493),
                             size: 30,
                           ),
                           contentPadding: EdgeInsets.symmetric(
@@ -160,20 +163,20 @@ class _connexionScreenState extends State<connexionScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: 12.0,
+                  height: 5.0,
                 ),
                 Text(
                   'Mot de passe oublié ?',
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 15.0,
                     fontWeight: FontWeight.bold,
-                    decoration: TextDecoration.underline,
                   ),
                 ),
                 SizedBox(
-                  height: 20.0,
+                  height: 40.0,
                 ),
-                Text(
+                /*Text(
                   'ou'.toUpperCase(),
                   textAlign: TextAlign.center,
                   style: TextStyle(
@@ -183,16 +186,19 @@ class _connexionScreenState extends State<connexionScreen> {
                 ),
                 SizedBox(
                   height: 20.0,
-                ),
-                Text(
-                  'Créer un compte',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.bold,
-                    decoration: TextDecoration.underline,
+                ),*/
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, widget.onChangedStep(1));
+                  },
+                  child: new Text(
+                    "Creer un compte",
+                    style: TextStyle(
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
+                )
               ],
             ),
           ),

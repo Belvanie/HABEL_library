@@ -38,7 +38,7 @@ class _AuthScreenState extends State<AuthScreen> {
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           leading: IconButton(
             icon: Icon(Icons.arrow_back),
-            color: Colors.black,
+            color: Color(0xFFFF1493),
             onPressed: () => widget.onChangedStep(0),
           ),
         ),
@@ -48,7 +48,7 @@ class _AuthScreenState extends State<AuthScreen> {
               horizontal: 30.0
             ),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center, //Pour que chaque phrase commence toujours a gauche
+              //crossAxisAlignment: CrossAxisAlignment.center, //Pour que chaque phrase commence toujours a gauche
               children: [
                 RichText(
                   text: TextSpan(
@@ -71,7 +71,7 @@ class _AuthScreenState extends State<AuthScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: 30.0, // Widget qui te permet de mettre des espaces.
+                  height: 20.0, // Widget qui te permet de mettre des espaces.
                 ),
                 Text(
                   'Inscription',
@@ -82,7 +82,7 @@ class _AuthScreenState extends State<AuthScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: 30.0,
+                  height: 15.0,
                 ),
 
                 Form(
@@ -95,9 +95,19 @@ class _AuthScreenState extends State<AuthScreen> {
                         validator: (value) => value!.isEmpty || !nomRegex.hasMatch(value)
                             ? 'Entrer un nom valide svp'
                             : null ,
-                        textAlign: TextAlign.center,
+                        textAlign: TextAlign.left,
                         decoration: InputDecoration(
-                          filled: true,
+                          labelText: 'Nom',
+                          hintText: 'Entrer votre nom',
+                          icon: Icon(
+                            Icons.person,
+                            color: Colors.blue,
+                            size: 30,
+                          ),
+                          contentPadding: EdgeInsets.symmetric(
+                            vertical: 10.0,
+                          ),
+                          /*filled: true,
                           fillColor: Color(0xFFDCDCDC),
                           hintText: 'Votre nom',
                           border: OutlineInputBorder(
@@ -114,11 +124,11 @@ class _AuthScreenState extends State<AuthScreen> {
                           ),
                           contentPadding: EdgeInsets.symmetric(
                             vertical: 20.0,
-                          ),
+                          ),*/
                         ),
                       ),
                       SizedBox(
-                        height: 25.0,
+                        height: 15.0,
                       ),
 
                       TextFormField(
@@ -126,30 +136,22 @@ class _AuthScreenState extends State<AuthScreen> {
                         validator: (value) => value!.isEmpty || !emailRegex.hasMatch(value)
                             ? 'Entrer un email valide svp'
                             : null ,
-                        textAlign: TextAlign.center,
+                        textAlign: TextAlign.left,
                         decoration: InputDecoration(
-                          filled: true,
-                          fillColor: Color(0xFFDCDCDC),
-                          hintText: 'Adresse mail',
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            borderSide: BorderSide(
-                              color: Colors.pink, // Couleur de bordure par defaut
-                            ),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            borderSide: BorderSide(
-                              color: Colors.green, // Couleur de bordure lorsqu'on est sur l'element
-                            ),
+                          labelText: 'Adresse mail',
+                          hintText: 'Entrer votre adresse mail',
+                          icon: Icon(
+                            Icons.mail_outline,
+                            color: Colors.blue,
+                            size: 30,
                           ),
                           contentPadding: EdgeInsets.symmetric(
-                            vertical: 20.0,
+                            vertical: 10.0,
                           ),
                         ),
                       ),
                       SizedBox(
-                        height: 25.0,
+                        height: 15.0,
                       ),
 
                       TextFormField(
@@ -157,30 +159,22 @@ class _AuthScreenState extends State<AuthScreen> {
                         validator: (value) => value!.isEmpty || !sexRegex.hasMatch(value)
                             ? 'Feminin Ou Masculin?'
                             : null ,
-                        textAlign: TextAlign.center,
+                        textAlign: TextAlign.left,
                         decoration: InputDecoration(
-                          filled: true,
-                          fillColor: Color(0xFFDCDCDC),
-                          hintText: 'Votre sex :Feminin/Masculin',
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            borderSide: BorderSide(
-                              color: Theme.of(context).primaryColorDark, // Couleur de bordure par defaut
-                            ),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            borderSide: BorderSide(
-                              color: Colors.green, // Couleur de bordure lorsqu'on est sur l'element
-                            ),
+                          labelText: 'Sex',
+                          hintText: 'Feminin/Masculin',
+                          icon: Icon(
+                            Icons.transgender_sharp,
+                            color: Colors.blue,
+                            size: 30,
                           ),
                           contentPadding: EdgeInsets.symmetric(
-                            vertical: 20.0,
+                            vertical: 10.0,
                           ),
                         ),
                       ),
                       SizedBox(
-                        height: 25.0,
+                        height: 15.0,
                       ),
 
                       TextFormField(
@@ -189,7 +183,7 @@ class _AuthScreenState extends State<AuthScreen> {
                             ? 'Entrer un mot de passe valide svp'
                             : null ,
                         obscureText: _isSecret,
-                        textAlign: TextAlign.center,
+                        textAlign: TextAlign.left,
                         decoration: InputDecoration(
                           suffixIcon: InkWell(
                             onTap: () =>
@@ -199,33 +193,26 @@ class _AuthScreenState extends State<AuthScreen> {
                             : Icons.visibility_off
                             ),
                           ),
-                          filled: true,
-                          fillColor: Color(0xFFDCDCDC),
-                          hintText: 'Mot de passe',
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            borderSide: BorderSide(
-                              color: Colors.pink,
-                            ),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            borderSide: BorderSide(
-                              color: Colors.green,
-                            ),
+                          //filled: true,
+                          labelText: 'Password',
+                          hintText: 'Entrer mot de passe',
+                          icon: Icon(
+                            Icons.lock,
+                            color: Color(0xFFFF1493),
+                            size: 30,
                           ),
                           contentPadding: EdgeInsets.symmetric(
-                            vertical: 20.0,
+                            vertical: 10.0,
                           ),
                         ),
                       ),
                       SizedBox(
-                        height: 25.0,
+                        height: 15.0,
                       ),
 
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Theme.of(context).primaryColorDark, //Color(0xFFFF1493),
+                          backgroundColor: Colors.blue, //Theme.of(context).primaryColorDark, //Color(0xFFFF1493),
                           padding: EdgeInsets.symmetric(
                             vertical: 15.0,
                           ),
@@ -258,18 +245,31 @@ class _AuthScreenState extends State<AuthScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: 30.0,
+                  height: 20.0,
                 ),
 
-                Text(
+                /*Text(
                   'Se connecter',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 17.0,
                     fontWeight: FontWeight.bold,
-                    decoration: TextDecoration.underline,
+                    //decoration: TextDecoration.underline,
                   ),
-                ),
+                ),*/
+
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, widget.onChangedStep(1));
+                  },
+                  child: new Text(
+                      "Se connecter",
+                      style: TextStyle(
+                        fontSize: 17.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                  ),
+                )
               ],
             ),
           ),

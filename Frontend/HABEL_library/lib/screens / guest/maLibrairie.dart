@@ -3,12 +3,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class accueilScreen extends StatefulWidget{
+class maLibrairieScreen extends StatefulWidget{
   @override
-  _accueilScreenState createState() => _accueilScreenState();
+  _maLibrairieScreenState createState() => _maLibrairieScreenState();
 }
 
-class _accueilScreenState extends State<accueilScreen> {
+class _maLibrairieScreenState extends State<maLibrairieScreen> {
 
   List <BottomNavigationBarItem> _item = [];
   int _id = 0;
@@ -56,7 +56,7 @@ class _accueilScreenState extends State<accueilScreen> {
       appBar: AppBar(
         backgroundColor: Colors.blue,
         title: Text(
-          'StreamLib',
+          'Mon profil',
         ),
 
       ),
@@ -64,9 +64,20 @@ class _accueilScreenState extends State<accueilScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              '$_value',
-              style: TextStyle(color: Colors.green, fontSize: 15),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  'Ma StreamLib',
+                  style: TextStyle(color: Colors.black, fontSize: 20),
+                ),
+              ],
+            ),
+            Container(
+              height: 400,
+              width: 350,
+              //color: none,
+              child: viewer(),
             )
           ],
         ),
@@ -90,4 +101,33 @@ class _accueilScreenState extends State<accueilScreen> {
       ),
     );
   }
+}
+
+Widget viewer(){
+  return ListView(
+    children: <Widget>[
+      ListTile(
+        leading: Icon(Icons.favorite_outlined, color: Colors.pink, size: 25,),
+        title: Text(
+          'Liste des favorits',
+          style: TextStyle(color: Colors.black, fontSize: 20),
+        ),
+      ),
+      ListTile(
+        leading: Icon(Icons.person, color: Colors.pink, size: 25,),
+        title: Text(
+          'Auteur suivi',
+          style: TextStyle(color: Colors.black, fontSize: 20),
+        ),
+      ),
+      ListTile(
+        leading: Icon(Icons.timer, color: Colors.pink, size: 25,),
+        title: Text(
+          'Lu recement',
+          style: TextStyle(color: Colors.black, fontSize: 20),
+        ),
+      ),
+    ],
+  );
+
 }
