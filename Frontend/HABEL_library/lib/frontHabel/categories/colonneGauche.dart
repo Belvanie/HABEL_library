@@ -1,10 +1,7 @@
-import 'dart:math';
-import 'package:StreamLib/screens%20/%20guest/livrePopulaire.dart';
-import 'package:StreamLib/screens%20/%20guest/nouveautes.dart';
 import 'package:flutter/material.dart';
 
-class BodyAccSection extends StatelessWidget {
-  BodyAccSection({super.key});
+class GaucheSection extends StatelessWidget {
+  GaucheSection({Key? key}) : super(key: key);
 
   final categories = [
     Container(
@@ -107,73 +104,64 @@ class BodyAccSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 600,
-      decoration: const BoxDecoration(
-        color: Color(0xFFFFFFFF),
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(20),
-          topRight: Radius.circular(20),
+    return SingleChildScrollView(
+      child: Container(
+        padding: const EdgeInsets.all(30),
+        height: 700,
+        width: 120,
+        color: Colors.blue,//height: double.infinity, width: double.infinity,
+        decoration: const BoxDecoration(
+          color: Color(0xFFFFFFFF),
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(20),
+            topRight: Radius.circular(20),
+          ),
         ),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            height: 70,
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(20),
-                topRight: Radius.circular(20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              height: 70,
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(20),
+                  topRight: Radius.circular(20),
+                ),
+                //color: Colors.green,
               ),
-              //color: Colors.green,
-            ),
-            child: ListView.separated(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              scrollDirection: Axis.horizontal,
+              child: ListView.separated(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                scrollDirection: Axis.vertical,
                 itemBuilder: ((context, index) => Column(
-                    children: [
-                      const SizedBox(height: 10),
-                      Container(
-                        padding: const EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: categories[index],
+                  children: [
+                    const SizedBox(height: 10),
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
                       ),
-                      const SizedBox(height: 10),
-                    ],
+                      child: categories[index],
+                    ),
+                    const SizedBox(height: 10),
+                  ],
                 )),
                 separatorBuilder: ((context,index) => const SizedBox(width: 0)),
                 itemCount: categories.length,
-            ),
-          ),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: const Text(
-              'Nouveautés',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
               ),
             ),
-          ),
-          Nouveautes(),
-
-          const SizedBox(height: 15),
-
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: const Text(
-              'Livres populaires',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: const Text(
+                'Nouveautés',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                ),
               ),
             ),
-          ),
-          LivrePopulaire(),
-        ],
+
+          ],
+        ),
       ),
     );
   }

@@ -1,13 +1,12 @@
-
-
+import 'package:StreamLib/frontHabel/authentification/navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:StreamLib/screens%20/%20guest/Auth.dart';
-import 'package:StreamLib/screens%20/%20guest/terms.dart';
-import 'package:StreamLib/screens%20/%20guest/connexion.dart';
+
+import '../authentification/Auth.dart';
+import '../authentification/connexion.dart';
+import '../authentification/terms.dart';
 
 class GuestScreen extends StatefulWidget{
-  GuestScreen({Key? key}) : super(key: key);
 
   @override
   _GuestScreenState createState() => _GuestScreenState();
@@ -31,6 +30,9 @@ class _GuestScreenState extends State<GuestScreen> {
       ),
       TermsScreen(
           onChangedStep: (index) => setState(() => _indexSelected = index),
+      ),
+      NavigationBar1(
+        onChangedStep: (index) => setState(() => _indexSelected = index),
       ),
     ]);
   }
